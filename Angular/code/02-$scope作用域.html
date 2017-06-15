@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../angular/angular.js"></script>
+    <script src="02-controller_$scope.js"></script>
+</head>
+<body ng-app="app" ng-init="name='init'"><!--ng-init="name='init' 全局的name变成init-->
+<p ng-controller="bbController2">{{name}}{{name1}}</p>  <!--2global-->
+<p>{{name}}</p> <!--1-->
+<p ng-controller="bbController1">{{name}}</p> <!--1-->
+</body>
+</html>

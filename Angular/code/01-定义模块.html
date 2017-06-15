@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定义模块</title>
+</head>
+<body ng-app="app"  ng-controller="bbController">
+<nav></nav>
+<!-- directive:nav -->
+<h2 nav></h2>
+<!--<p class="nav"></p>-->
+<ul>
+    <li>{{name}}</li>
+    <li ng-bind="age"></li>
+    <br>
+    <li ng-repeat="(key,value) in arr">{{key}}{{value}}</li>
+    <li ng-repeat="value in bb_user">{{value.name}}{{value.age}}</li>
+</ul>
+<!--单击事件:ng-click="click()-->
+<p ng-click="click($event,'p')">p</p>
+<!--双击事件:ng-dblclick="dblclick($event,'h2')"
+    鼠标移入事件:ng-mouseenter="mouserEnter()-->
+<h2 ng-dblclick="dblclick($event,'h2')" ng-mouseenter="mouserEnter()">h2</h2>
+<script src="../angular/angular.js"></script>
+<script src="01-.js"></script>
+</body>
+</html>
