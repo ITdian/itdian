@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../angular/angular.js"></script>
+    <script>
+        (function (angular) {
+            var app = angular.module('app',[]);
+            //$timeout和$interval对原生javascript中的setTimeout和setInterval进行封装
+            //行内式注入
+            app.controller('bbController',['$scope','$timeout','$interval',function ($scope,$timeout,$interval) {
+                $scope.name = 'bb';
+                //延时执行任务
+                $timeout(function () {
+                    $scope.name  = '延时'
+                },1000);
+                //隔指定时间执行任务
+                var timer  = $interval(function () {
+                    $scope.dateTime = new Date();
+                },2000);
+                //点击按钮停止定时器
+                $scope.shop = function () {
+                    alert('停止定时器');
+                    //停止指定的定时器
+                    $interval.cancel(timer);
+                }
+            }])
+        })(angular)
+    </script>
+    <title></title>
+</head>
+<body ng-app="app" ng-controller="bbController">
+<p>{{name}}</p>
+<p ng-bind-template="{{dateTime}}"></p>
+<button ng-click="shop()">停止定时器</button>
+</body>
+</html>

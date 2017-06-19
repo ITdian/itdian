@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../angular/angular.js"></script>
+    <script>
+        (function (angular) {
+            var app = angular.module('app',[]);
+            app.controller('bbController',['$scope',function ($scope) {
+                //单向数据绑定,把模型的数据 展示到视图中
+                $scope.name = 'bb';
+                $scope.age = 18
+            }]);
+        })(angular)
+    </script>
+    <title></title>
+</head>
+<body ng-app="app" ng-controller="bbController">
+<!--使用{{}}可以把模型的数据绑定到视图当中,加载时候,会造成闪烁-->
+<ul>
+    <li>{{name}}{{age}}</li>
+    <li ng-cloak>{{name}}{{age}}</li>
+    <!--数据绑定不会造成闪烁,没有办法绑定多个属性-->
+    <li ng-bind="name"></li>
+    <!--可以绑定多个数据,不糊造成闪烁-->
+    <li ng-bind-template="{{name}}{{age}}"></li>
+</ul>
+
+</body>
+</html>

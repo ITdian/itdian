@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../angular/angular.js"></script>
+    <script>
+        var app = angular.module('app',[]);
+        app.controller('bbController',['$scope','$http',function ($scope,$http) {
+                $http({
+                    url:'get.php',//请求地址
+                    method:'get',//请求方式
+                    params:{//get方式传递参数  在传递过程中,会自动帮你转成get.php?name = bb  传递时-->name:bb
+                        name:'bb'
+                    }
+                }).success(function (res) {
+                    alert(res);//成功时候回调
+                }).error(function (error) {
+                    alert(error);//失败时回调
+                });
+                $http({
+                    url:'post.php',//请求地址
+                    method:'post',//请求方式
+                    //post请求必须设置请求头
+                    headers:{
+                        'Content-Type':'application/x-www-form-urlencoded'
+                    },
+                    /*data:{data:{}传参形式 在传递数据时,是以json来传递的 name:'bb'  json串}*/
+                    data:'name:bb' //formdata
+                }).$success(function (res) {
+                    alert(res);//成功时候回调
+                }).error(function (error) {
+                    alert(error);//失败时候回调
+                });
+            //当请求头以'Content-Type':'application/x-www-form-urlencoded'是以json以对象形式传递,SOAP:是以对象形式传递  RESTFUL/restful:json串形式进行传递
+        }])
+    </script>
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>

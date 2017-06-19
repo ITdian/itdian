@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../angular/angular.js"></script>
+    <script>
+        (function (angular) {
+            var app = angular.module('app',[]);
+            app.controller('bbController',['$scope','$log',function ($scope,$log) {
+                $log.log('log信息');
+                $log.info('info信息');
+                $log.warn('warn信息');
+                $log.error('error信息');
+                $log.debug('debug信息');
+            }])
+        })(angular)
+    </script>
+</head>
+<body ng-app="app" ng-controller="bbController">
+</body>
+</html>

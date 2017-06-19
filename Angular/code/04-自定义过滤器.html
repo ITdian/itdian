@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义过滤器</title>
+    <script src="../angular/angular.js"></script>
+    <script>
+        (function (angular) {
+            var app = angular.module('app',[]);
+            app.controller('bbController',['$scope',function ($scope) {
+                $scope.name = 'hi you are 666';
+                $scope.age = 123;
+            }]);
+            app.directive('directiveName',function () {
+                return {
+
+                }
+            });
+            app.filter('filterName',[function () {
+                return function (input) {
+                    console.log('hello'+ input)
+                }
+            }]);
+            app.filter('firstUppcase',[function () {
+                return function (input) {
+                    return input[0].toUpperCase()+input.slice(1)
+                }
+            }])
+        })(angular)
+    </script>
+</head>
+<body ng-app="app" ng-controller="bbController">
+<p>{{name|filterName}}</p>
+<p>{{name|firstUppcase}}</p>
+</body>
+</html>

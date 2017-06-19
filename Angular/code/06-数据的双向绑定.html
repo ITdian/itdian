@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../angular/angular.js"></script>
+    <script>
+        (function (angular) {
+            var app = angular.module('app',[]);
+            app.controller('bbController',['$scope',function ($scope) {
+                //单向数据绑定,把模型的数据 展示到视图中
+                //在模型中定义name属性
+                $scope.name = '登录';
+                $scope.login = function () {
+                    //点击时候能直接打印视图绑定到模型的数据
+                    alert($scope.userName+$scope.pwd)
+                }
+            }]);
+        })(angular)
+    </script>
+    <title></title>
+</head>
+<body ng-app="app" ng-controller="bbController">
+<!--模型的数据绑定到视图中,使用bg-bind指令-->
+<h1 ng-bind="name"></h1>
+<!--数据的双向绑定必须借助表单才可以
+    视图的数据绑定到模型当中,使用ng-model指令
+-->
+<input type="text" ng-model="userName">
+<input type="password" ng-model="pwd">
+<!--监听按钮点击,使用方法ng-click = "事件名称()"-->
+<button ng-click="login()">登录</button>
+</body>
+</html>

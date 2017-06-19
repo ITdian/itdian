@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+    <script src="../angular/angular.js"></script>
+    <script src="03.filter.js"></script>
+</head>
+<body ng-app="app" ng-controller="bbController">
+<!--管道符  上次的结果当做下一次的参数进行传递
+过滤器的本质就是一个方法
+会自动的把|前面的内容,当做方法的第一个参数传入
+如果想要自己手动传参 使用:来进行传递
+-->
+<p>{{price|currency:'$'}}</p>
+<p>{{nowDate|date:'yyyy年MM月dd日 HH:mm:ss'}}</p><!--H/24小时制  h/12小时制-->
+<p>{{course|filter:'h'}}</p>
+<p>{{student|json}}</p>
+<p>{{student|limitTo:-2}}</p>
+<p>{{str|uppercase|lowercase}}</p>
+<p>{{num|number:2}}</p><!--:2控制小数点的后几位 num当中不能出现非数字,不然过滤器失效没有结果 -->
+<p>{{student|orderBy:'age':true}}</p><!--true是降序,false是升序-->
+</body>
+</html>

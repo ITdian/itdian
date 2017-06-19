@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../angular/angular.js"></script>
+    <script>
+        (function (angular) {
+            var app = angular.module('app',[]);
+            /*1.行内式注入*/
+            app.controller('bbController',['$scope','$http',function ($scope,$http) {
+                $scope.name = 'line';
+                $scope.str  = 'hello world'
+            }]);
+            /*2.推断式注入*/
+            app.controller('bbController1',function ($scope,$http) {
+                $scope.name = 'push'
+            })
+        })(angular)
+    </script>
+    <title></title>
+</head>
+<body ng-app="app">
+<p ng-controller="bbController">{{name}}</p>
+<p ng-controller="bbController1">{{name}}</p>
+</body>
+</html>

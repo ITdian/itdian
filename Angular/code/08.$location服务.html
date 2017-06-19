@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../angular/angular.js"></script>
+    <script>
+        (function (angular) {
+           var app = angular.module('app',[]);
+           app.controller('bbController',['$scope','$location',function ($scope,$location) {
+               $scope.absUrl = $location.absUrl();
+               //获取锚点之后的地址
+               $scope.url = $location.url();
+               //端口号
+               $scope.port = $location.port();
+               //主机名
+               $scope.host = $location.host();
+               //获取的锚点,从第二个锚点开始的值
+               $scope.hash = $location.hash();
+               //参数
+               $scope.search = $location.search();
+           }])
+        })(angular)
+    </script>
+</head>
+<body ng-app="app" ng-controller="bbController">
+<p>{{absUrl}}</p>
+<p>{{url}}</p>
+<p>{{port}}</p>
+<p>{{host}}</p>
+<p>{{hash}}</p>
+<p>{{search}}</p>
+</body>
+</html>

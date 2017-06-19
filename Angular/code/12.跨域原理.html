@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../angular/angular.js"></script>
+    <script>
+        /*通过src实现跨域
+         1.在前端定义一个function
+         function fn(res){
+         alert(res)
+         }
+         2.通过< script src=>向服务器发送一个请求.在发送请求过程中。
+         把function的名称作为参数传给服务器。
+         < script scr="get.php?callback = fn"><script>
+         3.服务器接收callback的值。
+         $fn = $_GET['callback']
+         4.在返回时候,在接收参数的后面拼接一个括号。如果想要传递数据，就把数据放进括号当中。echo $fn.'("bb12")';
+         5.前端就会执行之前定义的function fn("hello")*/
+        var app = angular.module('app',[]);
+        app.controller('bbController',['$scope',function ($scope) {
+            $scope.name = 'test'
+        }])
+    </script>
+    <script>
+        //1
+        function fn(res) {
+            alert(res)
+        }
+        //使用src内容请求 是不会存在跨域问题
+        //在服务端,返回js语句是可以直接运行
+
+    </script>
+    <!--2-->
+    <script src="get.php?callback = fn"></script>
+ <!--   php文件<?php
+    $fn = $_GET["callback"];
+    echo $fn.'("bb12")'
+    -->
+</head>
+<body ng-app="app" ng-controller="bbController">
+<p>{{name}}</p>
+</body>
+</html>
