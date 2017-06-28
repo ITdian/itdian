@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>factory自定义服务</title>
+    <script src="../angular/angular.js"></script>
+    <script>
+        var app = angular.module('app',[]);
+        //自定义服务 //服务的本质就是一个方法,或者是一个对象
+        app.factory('show',function () {
+//            return function () {//直接使用方法来调用
+//                alert('hello')
+//            };
+            function show1() {
+                alert('show1')
+            }
+            function show2() {
+                alert('show2')
+            }
+            return {
+                show1:show1,
+                show2:show2
+            }
+        });
+
+        //自定义控制器
+        //使用自己定义的服务也要注入进来
+        app.controller('bbController',['$scope','$http','show',function ($scope,$http,show) {
+            show.show1();
+            show.show2();
+//            show();
+        }])
+
+    </script>
+</head>
+<body ng-app="app" ng-controller="bbController">
+
+</body>
+</html>

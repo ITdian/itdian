@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>service自定义服务</title>
+    <script src="../angular/angular.js"></script>
+    <script>
+        var app = angular.module('app',[]);
+        //如果要依赖其他服务,那么就把其他的服务注入进来
+        app.service('showTime',['$filter',function ($filter) {
+            //里面所有的功能要使用this来定义
+            this.cur_date = function () {
+                var cur_date = new Date();
+                var date = $filter('date');
+                console.log(cur_date);
+                return date(cur_date,'yyyy-MM-dd HH:mm:ss')
+            };
+            this.sayHello = function () {
+                alert('Hello World!')
+            }
+        }]);
+        //service自定义服务,所有的方法都是以this来定义
+        //自定义控制器 ,自己定义的服务也要注入进来
+        app.controller('bbController',['$scope','showTime',function ($scope,showTime) {
+            $scope.cur_date = showTime.cur_date();
+//            调用服务
+            showTime.sayHello();
+        }])
+
+    </script>
+</head>
+<body ng-app="app" ng-controller="bbController">
+<h1>{{cur_date}}</h1>
+</body>
+</html>

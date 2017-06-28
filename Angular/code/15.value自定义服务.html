@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>value自定义服务</title>
+    <script src="../angular/angular.js"></script>
+    <script>
+        var app = angular.module('app',[]);
+        app.controller('bbController',['$scope','key','version',function ($scope,key,version) {
+            $scope.key = key;
+            $scope.version = version;
+        }]);
+        //使用服务
+        app.value('version','1.0');
+        app.value('key','bb')
+    </script>
+</head>
+<body ng-app="app" ng-controller="bbController">
+<p>{{version}}</p>
+<p>{{key}}</p>
+</body>
+</html>
